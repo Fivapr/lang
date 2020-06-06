@@ -1,5 +1,5 @@
 const merge = require('webpack-merge')
-const commonConfig = require('./common.webpack')
+const commonConfig = require('./webpack.common')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 
