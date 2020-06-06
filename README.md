@@ -1,2 +1,3 @@
 # lang
-player for learning languages by videos with subtitles
+
+- Player for learning languages by videos with subtitles
