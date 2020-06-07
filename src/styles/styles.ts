@@ -13,17 +13,12 @@ export const styles = css`
     height: 100%;
   }
 
-  html {
-    font-size: 10px;
-  }
-
   body {
     min-width: 32rem;
-    font-family: 'Inter', 'Arial', sans-serif;
     font-feature-settings: 'tnum', 'ss01', 'cv05', 'cv08';
     font-size: 1.4rem;
-    color: #fff;
-    background-color: #1d2328;
+    color: #000000;
+    background-color: #ffffff;
   }
 
   a,
