@@ -6,7 +6,7 @@ import { hot } from 'react-hot-loader/root'
 import { iocContext } from 'hooks/useInject'
 import { config } from 'config'
 import { createBrowserHistory } from 'history'
-import { GlobalStyles } from 'styles'
+import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core'
 
 const Component = (): JSX.Element => {
   const history = createBrowserHistory()
@@ -15,8 +15,17 @@ const Component = (): JSX.Element => {
   return (
     <iocContext.Provider value={ioc}>
       <BrowserRouter>
-        <GlobalStyles />
-        <Root />
+        <ThemeProvider
+          theme={createMuiTheme({
+            palette: {
+              type: 'dark',
+              primary: { main: '#1c1c1c', light: '#111111', dark: '#282828' },
+            },
+          })}
+        >
+          <CssBaseline />
+          <Root />
+        </ThemeProvider>
       </BrowserRouter>
     </iocContext.Provider>
   )
