@@ -12,6 +12,7 @@ module.exports = merge(commonConfig, {
     historyApiFallback: true,
     hot: true,
     clientLogLevel: 'none',
+    host: '0.0.0.0',
   },
   resolve: {
     alias: {

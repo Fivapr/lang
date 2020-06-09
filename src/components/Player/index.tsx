@@ -26,6 +26,7 @@ export const Player = (props: Props) => {
 
     if (subtitles) {
       const handleCueChange = function (this: TextTrack): void {
+        // @ts-ignore
         setSub(this?.activeCues?.[0]?.text)
       }
 

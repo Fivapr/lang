@@ -26,6 +26,7 @@ module.exports = {
     'react/jsx-no-target-blank': 'off',
     'react/display-name': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/adjacent-overload-signatures': 'error',

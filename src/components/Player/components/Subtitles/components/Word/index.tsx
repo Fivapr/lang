@@ -8,7 +8,7 @@ interface Props {
 
 export const Word = (props: Props) => {
   // const notEnglishChars = /[^a-zA-Z0-9 !?'"-.]+/
-  const lettersOnly = /[^a-zA-Z]+/
+  // const lettersOnly = /[^a-zA-Z]+/
 
   return (
     <StyledWord
