@@ -11,6 +11,7 @@ module.exports = merge(commonConfig, {
     port: 3000,
     historyApiFallback: true,
     hot: true,
+    clientLogLevel: 'none',
   },
   resolve: {
     alias: {

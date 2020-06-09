@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export const Main = (): JSX.Element => {
+export const MainScreen = (): JSX.Element => {
   const classes = useStyles()
 
   return (

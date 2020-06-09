@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyledWord } from './styles'
-import { addWord } from '../../../../../../services/lingualeo'
 
 interface Props {
   word: string
@@ -14,7 +13,7 @@ export const Word = (props: Props) => {
   return (
     <StyledWord
       onClick={() => {
-        addWord(props.word.replace(lettersOnly, ''))
+        // addWord(props.word.replace(lettersOnly, ''))
       }}
     >
       {props.word}

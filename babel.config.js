@@ -3,12 +3,6 @@ module.exports = {
     ['@babel/env', { modules: 'commonjs' }],
     ['@babel/preset-typescript', { onlyRemoveTypeImports: true }],
     '@babel/preset-react',
-    [
-      '@emotion/babel-preset-css-prop',
-      {
-        labelFormat: '[dirname]__[local]',
-      },
-    ],
   ],
   plugins: [
     '@babel/plugin-transform-runtime',

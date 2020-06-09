@@ -10,7 +10,7 @@ interface Props {
   subtitlesSrc: string
 }
 
-export const MovieScreen = (props: Props) => {
+export const Player = (props: Props) => {
   const ref = useRef<HTMLVideoElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [sub, setSub] = useState<string | undefined>()
