@@ -12,6 +12,10 @@ const muiPlugins = [
         transform: '@material-ui/icons/esm/${member}',
         preventFullImport: true,
       },
+      'date-fns': {
+        transform: 'date-fns/esm/${member}',
+        preventFullImport: true,
+      },
     },
   ],
 ]
