@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Subtitles } from './components/Subtitles'
 import { PlayerWrapper, PlayIcon, FullscreenIcon, Video } from './styles'
 import playIcon from './static/playIcon.svg'
 import fullscreenIcon from './static/fullscreenIcon.svg'
 import { Controls } from './components/Controls'
+import { usePlayerStore } from './hooks'
 
 interface Props {
   videoSrc: string
@@ -13,13 +14,12 @@ interface Props {
 export const Player = (props: Props) => {
   const ref = useRef<HTMLVideoElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const [sub, setSub] = useState<string | undefined>()
-  const [isTouched, setTouched] = useState(false)
-  const [isHardPaused, setHardPaused] = useState(true)
-  const [isFullscreen, setFullscreen] = useState(false)
-  const [time, setTime] = useState<number | undefined>(0)
-  const [duration, setDuration] = useState<number | undefined>(0)
-  const [bufferedTime, setBufferedTime] = useState<number | undefined>(0)
+  const playerStore = usePlayerStore({
+    video: ref.current!,
+    wrapper: wrapperRef.current!,
+    videoSrc: props.videoSrc,
+    subtitlesSrc: props.subtitlesSrc,
+  })
 
   const showSubtitles = () => {
     const subtitles = ref.current?.textTracks[0]
@@ -71,39 +71,6 @@ export const Player = (props: Props) => {
       ref.current?.play()
     }
   }
-
-  const togglePlay = () => {
-    if (ref.current?.paused) {
-      play()
-    } else {
-      pause()
-    }
-  }
-
-  const toggleFullscreen = (e: any) => {
-    e.stopPropagation()
-
-    if (isFullscreen) {
-      document.exitFullscreen()
-      setFullscreen(false)
-    } else {
-      wrapperRef.current?.requestFullscreen()
-      setFullscreen(true)
-    }
-  }
-
-  const setVolume = (volume: number) => {
-    if (ref.current) {
-      ref.current.volume = volume
-    }
-  }
-
-  const setVideoTime = (time: number) => {
-    if (ref.current) {
-      ref.current.currentTime = time
-    }
-  }
-
   return (
     <PlayerWrapper
       isFullscreen={isFullscreen}

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route } from 'react-router'
 
-import { MainScreen } from 'screens/Main'
+import { MainScreen } from 'screens/MainScreen'
 import { Header } from 'components/Header'
-import { PlayerScreen } from './Player'
+import { PlayerScreen } from './PlayerScreen'
 
 export const Root = (): JSX.Element => {
   return (

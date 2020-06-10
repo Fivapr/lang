@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SrcInput } from './components/SrcInput'
 import { Button } from '@material-ui/core'
-import { useScreenStore } from 'screens/Player/hooks'
+import { useScreenStore } from 'screens/PlayerScreen/hooks'
 
 export const SrcForm = () => {
   const [videoSrc, setvideoSrc] = useState('')

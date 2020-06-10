@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { addSeconds, format } from 'date-fns'
 import {
   ControlsWrapper,
   Time,
@@ -14,6 +13,7 @@ import {
 } from './styles'
 
 import volumeIcon from './static/volumeIcon.svg'
+import { formatTime } from 'utils/formatTime'
 
 interface Props {
   isFullscreen: boolean
@@ -22,11 +22,6 @@ interface Props {
   elapsedTime?: number // seconds
   duration?: number // seconds
   bufferedTime?: number // seconds
-}
-
-const formatTime = (seconds = 0) => {
-  const helperDate = addSeconds(new Date(0), seconds)
-  return format(helperDate, 'mm:ss')
 }
 
 export const Controls = (props: Props) => {
