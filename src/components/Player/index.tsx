@@ -14,63 +14,11 @@ interface Props {
 export const Player = (props: Props) => {
   const ref = useRef<HTMLVideoElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const playerStore = usePlayerStore({
+  const store = usePlayerStore({
     video: ref.current!,
     wrapper: wrapperRef.current!,
-    videoSrc: props.videoSrc,
-    subtitlesSrc: props.subtitlesSrc,
   })
 
-  const showSubtitles = () => {
-    const subtitles = ref.current?.textTracks[0]
-
-    if (subtitles) {
-      const handleCueChange = function (this: TextTrack): void {
-        // @ts-ignore
-        setSub(this?.activeCues?.[0]?.text)
-      }
-
-      subtitles.mode = 'hidden'
-      subtitles.oncuechange = handleCueChange
-    }
-  }
-
-  const play = async () => {
-    await ref.current?.play()
-
-    if (ref.current) {
-      ref.current.ontimeupdate = function (this) {
-        setTime(ref.current?.currentTime)
-        setBufferedTime(
-          ref.current?.buffered.end(ref.current?.buffered.length - 1)
-        )
-      }
-
-      const duration = ref.current?.duration
-      setDuration(duration)
-    }
-
-    showSubtitles()
-    setTouched(true)
-    setHardPaused(false)
-  }
-
-  const pause = () => {
-    ref.current?.pause()
-    setHardPaused(true)
-  }
-
-  const subtitleEnterPause = () => {
-    if (!isHardPaused) {
-      ref.current?.pause()
-    }
-  }
-
-  const subtitleLeavePlay = () => {
-    if (!isHardPaused) {
-      ref.current?.play()
-    }
-  }
   return (
     <PlayerWrapper
       isFullscreen={isFullscreen}
