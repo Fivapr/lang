@@ -13,7 +13,7 @@ import {
   VolumeSlider,
 } from './styles'
 
-import volumeIcon from './volumeIcon.svg'
+import volumeIcon from './static/volumeIcon.svg'
 
 interface Props {
   isFullscreen: boolean

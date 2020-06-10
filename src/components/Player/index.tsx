@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react'
 import { Subtitles } from './components/Subtitles'
 import { PlayerWrapper, PlayIcon, FullscreenIcon, Video } from './styles'
-import playIcon from './playIcon.svg'
-import fullscreenIcon from './fullscreenIcon.svg'
+import playIcon from './static/playIcon.svg'
+import fullscreenIcon from './static/fullscreenIcon.svg'
 import { Controls } from './components/Controls'
 
 interface Props {

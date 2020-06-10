@@ -1,5 +1,6 @@
 import React, { useRef, ChangeEvent } from 'react'
-import { makeStyles, Typography, TextField, Button } from '@material-ui/core'
+import { Typography, TextField, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 interface Props {
   value: string

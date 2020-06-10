@@ -1,3 +1,4 @@
+import 'mobx-react-lite/batchingForReactDom'
 import { createIOC } from '../bindings'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
@@ -6,7 +7,15 @@ import { hot } from 'react-hot-loader/root'
 import { iocContext } from 'hooks/useInject'
 import { config } from 'config'
 import { createBrowserHistory } from 'history'
-import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core'
+import { CssBaseline } from '@material-ui/core'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: { main: '#1c1c1c', light: '#111111', dark: '#282828' },
+  },
+})
 
 const Component = (): JSX.Element => {
   const history = createBrowserHistory()
@@ -15,14 +24,7 @@ const Component = (): JSX.Element => {
   return (
     <iocContext.Provider value={ioc}>
       <BrowserRouter>
-        <ThemeProvider
-          theme={createMuiTheme({
-            palette: {
-              type: 'dark',
-              primary: { main: '#1c1c1c', light: '#111111', dark: '#282828' },
-            },
-          })}
-        >
+        <ThemeProvider theme={theme}>
           <CssBaseline />
           <Root />
         </ThemeProvider>
