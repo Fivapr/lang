@@ -3,7 +3,7 @@ import { SubtitlesWrapper, SubtitlesText } from './styles'
 import { Word } from './components/Word'
 
 interface Props {
-  sub?: string
+  sub: string
   play: () => void
   pause: () => void
   isFullscreen: boolean
@@ -12,10 +12,6 @@ interface Props {
 export const Subtitles = (props: Props) => {
   const stopPropagation = (e: any) => {
     e.stopPropagation()
-  }
-
-  if (!props.sub) {
-    return null
   }
 
   const words = props.sub.split(' ')

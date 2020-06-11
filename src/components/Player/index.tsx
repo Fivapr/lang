@@ -21,42 +21,39 @@ export const Player = (props: Props) => {
 
   return (
     <PlayerWrapper
-      isFullscreen={isFullscreen}
-      onClick={togglePlay}
+      isFullscreen={store.isFullscreen}
+      onClick={store.togglePlay}
       ref={wrapperRef}
     >
-      {!isTouched && <PlayIcon src={playIcon} alt="Play" />}
+      {!store.started && <PlayIcon src={playIcon} alt="Play" />}
 
-      {isTouched && (
+      {store.started && (
         <FullscreenIcon
           src={fullscreenIcon}
           alt="Fullscreen"
-          isFullscreen={isFullscreen}
-          onClick={toggleFullscreen}
+          isFullscreen={store.isFullscreen}
+          onClick={store.toggleFullscreen}
         />
       )}
-      <Video src={props.videoSrc} isFullscreen={isFullscreen} ref={ref}>
-        <track
-          label="English"
-          kind="subtitles"
-          src={props.subtitlesSrc}
-          srcLang="en"
-        ></track>
+      <Video src={props.videoSrc} isFullscreen={store.isFullscreen} ref={ref}>
+        {props.subtitlesSrc && <track src={props.subtitlesSrc}></track>}
       </Video>
-      <Subtitles
-        isFullscreen={isFullscreen}
-        sub={sub}
-        pause={subtitleEnterPause}
-        play={subtitleLeavePlay}
-      />
-      {isTouched && (
+      {store.currentSub && (
+        <Subtitles
+          isFullscreen={store.isFullscreen}
+          sub={store.currentSub}
+          pause={store.subtitleEnterPause}
+          play={store.subtitleLeavePlay}
+        />
+      )}
+      {store.started && (
         <Controls
-          elapsedTime={time}
-          setTime={setVideoTime}
-          duration={duration}
-          isFullscreen={isFullscreen}
-          setVolume={setVolume}
-          bufferedTime={bufferedTime}
+          elapsedTime={store.currentTime}
+          setTime={store.setTime}
+          duration={store.duration}
+          isFullscreen={store.isFullscreen}
+          setVolume={store.setVolume}
+          bufferedTime={store.bufferedTime}
         />
       )}
     </PlayerWrapper>

@@ -19,9 +19,9 @@ interface Props {
   isFullscreen: boolean
   setVolume: (volume: number) => void
   setTime: (time: number) => void // seconds
-  elapsedTime?: number // seconds
-  duration?: number // seconds
-  bufferedTime?: number // seconds
+  elapsedTime: number // seconds
+  duration: number // seconds
+  bufferedTime: number // seconds
 }
 
 export const Controls = (props: Props) => {

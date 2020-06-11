@@ -4,10 +4,14 @@ interface Fullscreen {
   isFullscreen: boolean
 }
 
+// width: ${(props) => (props.isFullscreen ? '100vw' : '640px')};
+// height: ${(props) => (props.isFullscreen ? '100vh' : '360px')};
 export const PlayerWrapper = styled.div<Fullscreen>`
   cursor: pointer;
-  width: ${(props) => (props.isFullscreen ? '100vw' : '640px')};
-  height: ${(props) => (props.isFullscreen ? '100vh' : '360px')};
+  &:fullscreen {
+    width: 100vw;
+    height: 100vh;
+  }
   position: relative;
 `
 
