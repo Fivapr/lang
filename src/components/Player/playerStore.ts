@@ -35,6 +35,7 @@ export class PlayerStore {
     this.wrapper = args.wrapper
   }
 
+  @action
   start = async () => {
     await this.video!.play()
 
@@ -63,9 +64,14 @@ export class PlayerStore {
     subtitles.mode = 'hidden'
     subtitles.oncuechange = () => {
       if (subtitles.activeCues.length) {
-        this.currentSub = subtitles.activeCues[0].text
+        this.setSubtitles(subtitles.activeCues[0].text)
       }
     }
+  }
+
+  @action
+  setSubtitles = (sub: string) => {
+    this.currentSub = sub
   }
 
   @action
