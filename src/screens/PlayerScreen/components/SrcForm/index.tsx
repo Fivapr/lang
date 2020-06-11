@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { SrcInput } from './components/SrcInput'
 import { Button } from '@material-ui/core'
-import { useScreenStore } from 'screens/PlayerScreen/hooks'
 
-export const SrcForm = () => {
+interface Props {
+  setState: (arg: { videoSrc: string; subtitlesSrc: string }) => void
+}
+
+export const SrcForm = (props: Props) => {
   const [videoSrc, setvideoSrc] = useState('')
   const [subtitlesSrc, setsubtitlesSrc] = useState('')
-  const screenStore = useScreenStore()
 
   const handleWatchButtonClick = () => {
-    screenStore.videoSrc = videoSrc
-    screenStore.subtitlesSrc = subtitlesSrc
+    props.setState({ videoSrc, subtitlesSrc })
   }
 
   return (

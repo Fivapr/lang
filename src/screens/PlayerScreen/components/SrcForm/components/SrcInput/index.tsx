@@ -52,6 +52,7 @@ export const SrcInput = (props: Props) => {
         className={classes.displayNone}
         onChange={handleLocalFileChange}
       ></input>
+
       <Button variant="contained" onClick={handleUploadClick}>
         {props.buttonText}
       </Button>
