@@ -1,29 +1,30 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Subtitles } from './components/Subtitles'
 import { PlayerWrapper, PlayIcon, FullscreenIcon, Video } from './styles'
 import playIcon from './static/playIcon.svg'
 import fullscreenIcon from './static/fullscreenIcon.svg'
 import { Controls } from './components/Controls'
-import { usePlayerStore } from './hooks'
+import { observer, useObserver } from 'mobx-react-lite'
+import { PlayerStore } from './store'
 
 interface Props {
   videoSrc: string
   subtitlesSrc: string
 }
 
-export const Player = (props: Props) => {
-  const ref = useRef<HTMLVideoElement>(null)
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const store = usePlayerStore({
-    video: ref.current!,
-    wrapper: wrapperRef.current!,
-  })
+export const Player = observer((props: Props) => {
+  const video = useRef<HTMLVideoElement>(null)
+  const wrapper = useRef<HTMLDivElement>(null)
+  const [store] = React.useState(new PlayerStore())
+  useEffect(() => {
+    store.init({ video: video.current!, wrapper: wrapper.current! })
+  }, [])
 
-  return (
+  return useObserver(() => (
     <PlayerWrapper
       isFullscreen={store.isFullscreen}
       onClick={store.togglePlay}
-      ref={wrapperRef}
+      ref={wrapper}
     >
       {!store.started && <PlayIcon src={playIcon} alt="Play" />}
 
@@ -35,7 +36,7 @@ export const Player = (props: Props) => {
           onClick={store.toggleFullscreen}
         />
       )}
-      <Video src={props.videoSrc} isFullscreen={store.isFullscreen} ref={ref}>
+      <Video src={props.videoSrc} isFullscreen={store.isFullscreen} ref={video}>
         {props.subtitlesSrc && <track src={props.subtitlesSrc}></track>}
       </Video>
       {store.currentSub && (
@@ -57,5 +58,5 @@ export const Player = (props: Props) => {
         />
       )}
     </PlayerWrapper>
-  )
-}
+  ))
+})
