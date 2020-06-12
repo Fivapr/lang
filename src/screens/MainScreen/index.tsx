@@ -2,8 +2,8 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Player } from 'components/Player'
-import subtitlesSrc from './subtitles.vtt'
-import videoSrc from './video.mp4'
+import subtitlesSrc from './shrek.vtt'
+import videoSrc from './shrek.webm'
 
 const useStyles = makeStyles((theme) => ({
   root: {
