@@ -52,12 +52,11 @@ export const Player = (props: Props) => {
 
         {store.started && (
           <Controls
-            elapsedTime={store.currentTime}
-            setTime={store.setTime}
             duration={store.duration}
-            isFullscreen={store.isFullscreen}
-            setVolume={store.setVolume}
+            elapsedTime={store.currentTime}
             bufferedTime={store.bufferedTime}
+            setTime={store.setTime}
+            setVolume={store.setVolume}
           />
         )}
       </PlayerWrapper>

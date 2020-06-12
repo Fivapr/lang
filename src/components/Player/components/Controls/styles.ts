@@ -1,10 +1,6 @@
 import styled from '@emotion/styled'
 
-interface Fullscreen {
-  isFullscreen: boolean
-}
-
-export const ControlsWrapper = styled.div<Fullscreen>`
+export const ControlsWrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 24px;
@@ -18,7 +14,7 @@ export const ControlsWrapper = styled.div<Fullscreen>`
   background-color: rgba(0, 0, 0, 0.75);
 `
 
-export const Time = styled.div<Fullscreen>`
+export const Time = styled.div`
   width: 44px;
   padding-left: 8px;
   height: 100%;

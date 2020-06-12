@@ -16,12 +16,11 @@ import volumeIcon from './static/volumeIcon.svg'
 import { formatTime } from 'utils/formatTime'
 
 interface Props {
-  isFullscreen: boolean
-  setVolume: (volume: number) => void
-  setTime: (time: number) => void // seconds
-  elapsedTime: number // seconds
   duration: number // seconds
+  elapsedTime: number // seconds
   bufferedTime: number // seconds
+  setTime: (time: number) => void // seconds
+  setVolume: (volume: number) => void
 }
 
 export const Controls = (props: Props) => {
@@ -57,20 +56,13 @@ export const Controls = (props: Props) => {
   }
 
   return (
-    <ControlsWrapper
-      onClick={stopPropagation}
-      isFullscreen={props.isFullscreen}
-    >
-      <Time isFullscreen={props.isFullscreen}>
-        {formatTime(props.elapsedTime)}
-      </Time>
+    <ControlsWrapper onClick={stopPropagation}>
+      <Time>{formatTime(props.elapsedTime)}</Time>
       <Timeline ref={timelineRef} onClick={handleTimelineClick}>
         <ElapsedTime percent={elapsedPercent} />
         <BufferedTime percent={bufferedPercent} />
       </Timeline>
-      <Time isFullscreen={props.isFullscreen}>
-        {formatTime(props.duration)}
-      </Time>
+      <Time>{formatTime(props.duration)}</Time>
       <Volume>
         <VolumeIconWrapper>
           <VolumeIcon src={volumeIcon} />
