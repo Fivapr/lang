@@ -4,7 +4,7 @@ import { PlayerWrapper, PlayIcon, FullscreenIcon, Video } from './styles'
 import playIcon from './static/playIcon.svg'
 import fullscreenIcon from './static/fullscreenIcon.svg'
 import { Controls } from './components/Controls'
-import { observer, useObserver } from 'mobx-react-lite'
+import { useObserver } from 'mobx-react-lite'
 import { PlayerStore } from './playerStore'
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   subtitlesSrc: string
 }
 
-export const Player = observer((props: Props) => {
+export const Player = (props: Props) => {
   const video = useRef<HTMLVideoElement>(null)
   const wrapper = useRef<HTMLDivElement>(null)
   const store = React.useRef(new PlayerStore()).current
@@ -21,7 +21,6 @@ export const Player = observer((props: Props) => {
   }, [])
 
   return useObserver(() => {
-    console.log(store.started)
     return (
       <PlayerWrapper
         isFullscreen={store.isFullscreen}
@@ -69,4 +68,4 @@ export const Player = observer((props: Props) => {
       </PlayerWrapper>
     )
   })
-})
+}

@@ -63,7 +63,7 @@ export class PlayerStore {
     const subtitles = this.video!.textTracks[0]
     subtitles.mode = 'hidden'
     subtitles.oncuechange = () => {
-      if (subtitles.activeCues.length) {
+      if (subtitles.activeCues?.length) {
         this.setSubtitles(subtitles.activeCues[0].text)
       }
     }
@@ -76,8 +76,12 @@ export class PlayerStore {
 
   @action
   play = () => {
-    this.video!.play()
-    this.canSubtitleTriggerPlay = true
+    if (this.started) {
+      this.video!.play()
+      this.canSubtitleTriggerPlay = true
+    } else {
+      this.start()
+    }
   }
 
   @action
