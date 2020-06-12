@@ -41,7 +41,6 @@ export const SrcForm = (props: Props) => {
         buttonText={'Load'}
       />
       <br />
-      <br />
       <Button
         variant="contained"
         className={classes.submitButton}

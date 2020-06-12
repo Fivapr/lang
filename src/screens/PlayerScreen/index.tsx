@@ -27,11 +27,11 @@ export const PlayerScreen = () => {
   return (
     <div>
       <Header />
-      <br />
       <div className={classes.container}>
         {state.videoSrc && (
           <Player videoSrc={state.videoSrc} subtitlesSrc={state.subtitlesSrc} />
         )}
+        <br />
         <SrcForm setState={setState} />
       </div>
     </div>
