@@ -8,7 +8,15 @@ import { Header } from 'components/Header'
 const useStyles = makeStyles(() => ({
   container: {
     width: 960,
+    padding: 24,
     margin: 'auto',
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+
+    textAlign: 'center',
   },
 }))
 
@@ -19,6 +27,7 @@ export const PlayerScreen = () => {
   return (
     <div>
       <Header />
+      <br />
       <div className={classes.container}>
         {state.videoSrc && (
           <Player videoSrc={state.videoSrc} subtitlesSrc={state.subtitlesSrc} />

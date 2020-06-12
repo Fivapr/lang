@@ -10,8 +10,21 @@ interface Props {
 }
 
 const useStyles = makeStyles(() => ({
-  minWidth: {
+  container: {
+    minWidth: 720,
+  },
+  wrapper: {
+    minWidth: 720,
+
+    display: 'flex',
+    alignItems: 'space-between',
+    justifyContent: 'space-between',
+  },
+  minInputWidth: {
     minWidth: 480,
+  },
+  fileButton: {
+    flex: 1,
   },
   displayNone: {
     display: 'none',
@@ -37,25 +50,32 @@ export const SrcInput = (props: Props) => {
   }
 
   return (
-    <>
+    <div className={classes.container}>
       <Typography variant="h6">{props.text}</Typography>
-      <TextField
-        variant="filled"
-        className={classes.minWidth}
-        value={props.value}
-        onChange={handleChange}
-      />
+      <div className={classes.wrapper}>
+        <TextField
+          variant="filled"
+          className={classes.minInputWidth}
+          value={props.value}
+          onChange={handleChange}
+        />
 
-      <input
-        type="file"
-        ref={fileInputRef}
-        className={classes.displayNone}
-        onChange={handleLocalFileChange}
-      ></input>
+        <input
+          type="file"
+          ref={fileInputRef}
+          className={classes.displayNone}
+          onChange={handleLocalFileChange}
+        ></input>
 
-      <Button variant="contained" onClick={handleUploadClick}>
-        {props.buttonText}
-      </Button>
-    </>
+        <Button
+          variant="contained"
+          className={classes.fileButton}
+          onClick={handleUploadClick}
+        >
+          {props.buttonText}
+        </Button>
+      </div>
+      <br />
+    </div>
   )
 }

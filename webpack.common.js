@@ -47,7 +47,7 @@ module.exports = {
         test: /\.(mp4|ogv|webm|mkv)([\?]?.*)$/,
         loader: 'file-loader',
         options: {
-          name: 'subtitles/[name]-[hash:6].[ext]',
+          name: 'videos/[name]-[hash:6].[ext]',
         },
         include: [path.resolve(__dirname, 'src')],
       },
