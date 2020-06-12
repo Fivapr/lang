@@ -29,9 +29,14 @@ export const PlayerScreen = () => {
       <Header />
       <div className={classes.container}>
         {state.videoSrc && (
-          <Player videoSrc={state.videoSrc} subtitlesSrc={state.subtitlesSrc} />
+          <>
+            <Player
+              videoSrc={state.videoSrc}
+              subtitlesSrc={state.subtitlesSrc}
+            />
+            <br />
+          </>
         )}
-        <br />
         <SrcForm setState={setState} />
       </div>
     </div>

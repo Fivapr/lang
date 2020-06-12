@@ -1,7 +1,7 @@
 import 'mobx-react-lite/batchingForReactDom'
 import { createIOC } from '../bindings'
 import React from 'react'
-import { Router } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Root } from 'screens/Root'
 import { hot } from 'react-hot-loader/root'
 import { iocContext } from 'hooks/useInject'
@@ -29,12 +29,12 @@ const Component = (): JSX.Element => {
 
   return (
     <iocContext.Provider value={ioc}>
-      <Router history={history}>
+      <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Root />
         </ThemeProvider>
-      </Router>
+      </BrowserRouter>
     </iocContext.Provider>
   )
 }
