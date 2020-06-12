@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { SubtitlesWrapper, SubtitlesText } from './styles'
 
 interface Props {
@@ -13,7 +13,7 @@ export const Subtitles = (props: Props) => {
     e.stopPropagation()
   }
 
-  const words = props.sub.split(' ')
+  // const words = props.sub.split(' ')
 
   return (
     <SubtitlesWrapper
@@ -23,13 +23,15 @@ export const Subtitles = (props: Props) => {
       onMouseLeave={props.play}
     >
       <SubtitlesText isFullscreen={props.isFullscreen}>
-        {words.map((word, index) => (
-          <Fragment key={index}>
-            {props.sub}
-            <span>&nbsp;</span>
-          </Fragment>
-        ))}
+        {props.sub}
       </SubtitlesText>
     </SubtitlesWrapper>
   )
 }
+
+// {words.map((word, index) => (
+//   <Fragment key={index}>
+//     {word}
+//     <span>&nbsp;</span>
+//   </Fragment>
+// ))}

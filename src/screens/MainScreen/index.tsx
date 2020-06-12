@@ -25,7 +25,15 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     width: 960,
+    padding: 24,
     margin: 'auto',
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+
+    textAlign: 'center',
   },
 }))
 
@@ -44,6 +52,7 @@ export const MainScreen = (): JSX.Element => {
         <Typography variant="h6">
           Пример. Кликните на любое слово в субтитрах, чтобы увидеть перевод.
         </Typography>
+        <br />
         <Player videoSrc={videoSrc} subtitlesSrc={subtitlesSrc} />
       </div>
     </>
