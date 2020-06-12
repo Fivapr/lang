@@ -6,6 +6,7 @@ export const services = {
   history: Symbol.for('History'),
   localStorage: Symbol.for('LocalStorage'),
   getLogger: Symbol.for('getLogger'),
+  lingualeo: Symbol.for('lingualeo'),
 }
 
 export const iocNames = services

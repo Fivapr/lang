@@ -7,6 +7,7 @@ import { getLogger } from './services/logger'
 import { RootLogger } from 'loglevel'
 
 import { logger } from 'services/logger'
+import { LingualeoApi } from 'services/lingualeo'
 
 declare global {
   interface Window {
@@ -31,6 +32,7 @@ export function createIOC(services: Services) {
   ioc.bind(iocNames.window).toConstantValue(services.window)
   ioc.bind(iocNames.navigator).toConstantValue(services.navigator)
   ioc.bind(iocNames.history).toConstantValue(services.history)
+  ioc.bind(iocNames.lingualeo).to(LingualeoApi).inSingletonScope()
   ioc.bind(iocNames.getLogger).toFactory(() => getLogger)
 
   return ioc
