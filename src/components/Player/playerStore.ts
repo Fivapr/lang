@@ -16,6 +16,9 @@ export class PlayerStore {
   canSubtitleTriggerPlay = false
 
   @observable
+  loaded = false
+
+  @observable
   started = false
 
   @observable
@@ -33,6 +36,12 @@ export class PlayerStore {
   init(args: Args) {
     this.video = args.video
     this.wrapper = args.wrapper
+    this.video.onloadeddata = this.setLoaded
+  }
+
+  @action
+  setLoaded = () => {
+    this.loaded = true
   }
 
   @action

@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from 'react'
-import { Subtitles } from './components/Subtitles'
-import { PlayerWrapper, PlayIcon, FullscreenIcon, Video } from './styles'
-import playIcon from './static/playIcon.svg'
-import fullscreenIcon from './static/fullscreenIcon.svg'
-import { Controls } from './components/Controls'
 import { useObserver } from 'mobx-react-lite'
 import { PlayerStore } from './playerStore'
+
+import { PlayerWrapper, PlayIcon, FullscreenIcon, Video } from './styles'
+import { Controls } from './components/Controls'
+import { Subtitles } from './components/Subtitles'
+import playIcon from './static/playIcon.svg'
+import fullscreenIcon from './static/fullscreenIcon.svg'
+import loaderIcon from './static/loaderIcon.svg'
 
 interface Props {
   videoSrc: string
@@ -23,7 +25,11 @@ export const Player = (props: Props) => {
   return useObserver(() => {
     return (
       <PlayerWrapper onClick={store.togglePlay} ref={wrapper}>
-        {!store.started && <PlayIcon src={playIcon} alt="Play" />}
+        {!store.loaded && <PlayIcon src={loaderIcon} alt="Load" />}
+
+        {store.loaded && !store.started && (
+          <PlayIcon src={playIcon} alt="Play" />
+        )}
 
         {store.started && (
           <FullscreenIcon
