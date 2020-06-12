@@ -5,13 +5,14 @@ interface Fullscreen {
 }
 export const PlayerWrapper = styled.div`
   cursor: pointer;
-  width: 860px;
+  width: 853px;
   height: 480px;
   &:fullscreen {
     width: 100vw;
     height: 100vh;
   }
   position: relative;
+  background-color: black;
 `
 
 export const PlayIcon = styled.img`
@@ -45,6 +46,6 @@ export const FullscreenIcon = styled.img`
 `
 
 export const Video = styled.video<Fullscreen>`
-  width: ${(props) => (props.isFullscreen ? '100vw' : '860px')};
-  height: ${(props) => (props.isFullscreen ? '100vh' : '480px')};
+  width: 100%;
+  height: 100%;
 `
