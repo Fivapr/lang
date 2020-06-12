@@ -1,6 +1,9 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { Player } from 'components/Player'
+import subtitlesSrc from './subtitles.vtt'
+import videoSrc from './video.mp4'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,6 +44,7 @@ export const MainScreen = (): JSX.Element => {
         <Typography variant="h6">
           Пример. Кликните на любое слово в субтитрах, чтобы увидеть перевод.
         </Typography>
+        <Player videoSrc={videoSrc} subtitlesSrc={subtitlesSrc} />
       </div>
     </>
   )

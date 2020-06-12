@@ -35,6 +35,22 @@ module.exports = {
         },
         include: [path.resolve(__dirname, 'src')],
       },
+      {
+        test: /\.(vtt)([\?]?.*)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'subtitles/[name]-[hash:6].[ext]',
+        },
+        include: [path.resolve(__dirname, 'src')],
+      },
+      {
+        test: /\.(mp4|ogv|webm|mkv)([\?]?.*)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'subtitles/[name]-[hash:6].[ext]',
+        },
+        include: [path.resolve(__dirname, 'src')],
+      },
     ],
   },
   plugins: [new HtmlWebpackPlugin({ template: 'src/index.html' })],
