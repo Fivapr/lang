@@ -22,18 +22,13 @@ export const Player = (props: Props) => {
 
   return useObserver(() => {
     return (
-      <PlayerWrapper
-        isFullscreen={store.isFullscreen}
-        onClick={store.togglePlay}
-        ref={wrapper}
-      >
+      <PlayerWrapper onClick={store.togglePlay} ref={wrapper}>
         {!store.started && <PlayIcon src={playIcon} alt="Play" />}
 
         {store.started && (
           <FullscreenIcon
             src={fullscreenIcon}
             alt="Fullscreen"
-            isFullscreen={store.isFullscreen}
             onClick={store.toggleFullscreen}
           />
         )}
