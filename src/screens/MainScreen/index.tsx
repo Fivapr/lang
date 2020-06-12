@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Player } from 'components/Player'
 import subtitlesSrc from './shrek.vtt'
 import videoSrc from './shrek.webm'
+import { Header } from 'components/Header'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +42,8 @@ export const MainScreen = (): JSX.Element => {
   const classes = useStyles()
 
   return (
-    <>
+    <div>
+      <Header />
       <div className={classes.container}>
         <Typography variant="h2">lang-beta.now.sh</Typography>
         <br />
@@ -56,6 +58,6 @@ export const MainScreen = (): JSX.Element => {
         <br />
         <Player videoSrc={videoSrc} subtitlesSrc={subtitlesSrc} />
       </div>
-    </>
+    </div>
   )
 }

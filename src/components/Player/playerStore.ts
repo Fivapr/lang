@@ -129,7 +129,8 @@ export class PlayerStore {
   }
 
   @action
-  toggleFullscreen = () => {
+  toggleFullscreen = (e: any) => {
+    e.preventDefault()
     if (this.isFullscreen) {
       // eslint-disable-next-line
       document.exitFullscreen().catch(() => { })

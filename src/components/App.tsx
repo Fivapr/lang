@@ -19,7 +19,13 @@ const theme = createMuiTheme({
 
 const Component = (): JSX.Element => {
   const history = createBrowserHistory()
-  const ioc = createIOC({ window, history, localStorage, config, navigator })
+  const ioc = createIOC({
+    window,
+    history,
+    localStorage,
+    config,
+    navigator,
+  })
 
   return (
     <iocContext.Provider value={ioc}>
