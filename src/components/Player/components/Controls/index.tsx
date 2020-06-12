@@ -41,9 +41,16 @@ export const Controls = (props: Props) => {
   }
 
   const handleTimelineClick = (e: any) => {
-    if (timelineRef && timelineRef.current) {
+    if (
+      timelineRef &&
+      timelineRef.current &&
+      timelineRef.current.parentElement &&
+      timelineRef.current.parentElement.parentElement
+    ) {
       props.setTime(
-        ((e.nativeEvent.clientX - timelineRef.current.offsetLeft) /
+        ((e.nativeEvent.x -
+          timelineRef.current.offsetLeft -
+          timelineRef.current.parentElement.parentElement.offsetLeft) /
           timelineRef.current.clientWidth) *
           props.duration
       )

@@ -44,6 +44,7 @@ export const MainScreen = (): JSX.Element => {
     <>
       <div className={classes.container}>
         <Typography variant="h2">lang-beta.now.sh</Typography>
+        <br />
         <Typography variant="h6">
           это онлайн-плеер для просмотра фильмов на английском языке. Ключевая
           особенность плеера — Перевод субтитров по клику мыши!
