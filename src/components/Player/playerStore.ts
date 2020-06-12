@@ -64,6 +64,7 @@ export class PlayerStore {
     subtitles.mode = 'hidden'
     subtitles.oncuechange = () => {
       if (subtitles.activeCues?.length) {
+        // @ts-ignore
         this.setSubtitles(subtitles.activeCues[0].text)
       }
     }
