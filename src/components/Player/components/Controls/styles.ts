@@ -80,7 +80,6 @@ export const VolumeIconWrapper = styled.div`
 export const VolumeIcon = styled.img`
   height: 18px;
   width: 18px;
-  cursor: pointer;
 `
 
 export const VolumeSliderWrapper = styled.div`

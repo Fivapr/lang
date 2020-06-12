@@ -31,14 +31,9 @@ export const Controls = (props: Props) => {
     e.stopPropagation()
   }
 
-  let elapsedPercent = 0
-  let bufferedPercent = 0
-
-  if (props.elapsedTime && props.duration && props.bufferedTime) {
-    elapsedPercent = (props?.elapsedTime / props?.duration) * 100
-    bufferedPercent =
-      (props?.bufferedTime / props?.duration) * 100 - elapsedPercent
-  }
+  const elapsedPercent = (props?.elapsedTime / props?.duration) * 100
+  const bufferedPercent =
+    (props?.bufferedTime / props?.duration) * 100 - elapsedPercent
 
   const handleVolumeChange = (e: any) => {
     setVolume(e.target.value)
@@ -46,7 +41,7 @@ export const Controls = (props: Props) => {
   }
 
   const handleTimelineClick = (e: any) => {
-    if (props.duration && timelineRef && timelineRef.current) {
+    if (timelineRef && timelineRef.current) {
       props.setTime(
         ((e.nativeEvent.clientX - timelineRef.current.offsetLeft) /
           timelineRef.current.clientWidth) *
