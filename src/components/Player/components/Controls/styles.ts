@@ -15,8 +15,9 @@ export const ControlsWrapper = styled.div`
 `
 
 export const Time = styled.div`
-  width: 44px;
+  width: 50px;
   padding-left: 8px;
+  padding-right: 8px;
   height: 100%;
 
   display: flex;
