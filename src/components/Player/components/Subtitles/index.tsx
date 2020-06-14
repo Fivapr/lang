@@ -26,7 +26,7 @@ export const Subtitles = (props: Props) => {
     >
       <SubtitlesText isFullscreen={props.isFullscreen}>
         {words.map((rawWord, index) => {
-          const separators = /[ !?".,\n]+/
+          const separators = /[ !?".,\n\[\]]+/
           const letters = /[^ !?".,\n]+/
 
           const word = rawWord.replace(separators, '')
