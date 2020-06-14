@@ -138,8 +138,9 @@ export class PlayerStore {
   }
 
   @action
-  toggleFullscreen = (e: any) => {
-    e.preventDefault()
+  toggleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation()
+
     if (this.isFullscreen) {
       // eslint-disable-next-line
       document.exitFullscreen().catch(() => { })
