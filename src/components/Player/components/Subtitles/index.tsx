@@ -14,7 +14,8 @@ export const Subtitles = (props: Props) => {
     e.stopPropagation()
   }
 
-  const words = props.sub.trim().split(' ')
+  const spaces = /[ \n]+/
+  const words = props.sub.trim().split(spaces)
 
   return (
     <SubtitlesWrapper
@@ -24,12 +25,21 @@ export const Subtitles = (props: Props) => {
       onMouseLeave={props.play}
     >
       <SubtitlesText isFullscreen={props.isFullscreen}>
-        {words.map((word, index) => (
-          <Fragment key={index}>
-            <Word word={word} sub={props.sub} />
-            <span>&nbsp;</span>
-          </Fragment>
-        ))}
+        {words.map((rawWord, index) => {
+          const separators = /[ !?".,\n]+/
+          const letters = /[^ !?".,\n]+/
+
+          const word = rawWord.replace(separators, '')
+          const separator = rawWord.replace(letters, '')
+
+          return (
+            <Fragment key={index}>
+              <Word word={word} sub={props.sub} />
+              {separator}
+              <span>&nbsp;</span>
+            </Fragment>
+          )
+        })}
       </SubtitlesText>
     </SubtitlesWrapper>
   )
