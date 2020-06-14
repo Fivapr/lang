@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+
+import { makeStyles } from '@material-ui/core/styles'
 import { StyledWord } from './styles'
 import Popper from '@material-ui/core/Popper'
-import { makeStyles } from '@material-ui/core/styles'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+
 import { setCORS } from 'google-translate-api-browser'
 const translate = setCORS('http://cors-anywhere.herokuapp.com/')
 
@@ -26,8 +29,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
   },
-
-  center: {},
 }))
 
 export const Word = (props: Props) => {
@@ -56,16 +57,20 @@ export const Word = (props: Props) => {
 
   const open = Boolean(anchorEl)
 
+  const handleClickAway = () => setAnchorEl(null)
+
   return (
     <>
       <StyledWord onClick={handleClick}>{props.word}</StyledWord>
       <Popper open={open} anchorEl={anchorEl} placement="top">
-        <div className={classes.paper}>
-          <div>
-            {props.word} - {translation}
+        <ClickAwayListener onClickAway={handleClickAway}>
+          <div className={classes.paper}>
+            <div>
+              {props.word} - {translation}
+            </div>
+            <div>{phrase}</div>
           </div>
-          <div>{phrase}</div>
-        </div>
+        </ClickAwayListener>
       </Popper>
     </>
   )
