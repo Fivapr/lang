@@ -1,24 +1,72 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyledWord } from './styles'
-import { useLingualeoApi } from 'hooks/useLingualeoApi'
+import Popper from '@material-ui/core/Popper'
+import { makeStyles } from '@material-ui/core/styles'
+import { setCORS } from 'google-translate-api-browser'
+const translate = setCORS('http://cors-anywhere.herokuapp.com/')
 
 interface Props {
+  sub: string
   word: string
   context?: string
 }
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    minHeight: 80,
+    minWidth: 460,
+
+    border: '1px solid',
+    padding: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
+    marginBottom: theme.spacing(1),
+
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+
+  center: {},
+}))
+
 export const Word = (props: Props) => {
-  // const notEnglishChars = /[^a-zA-Z0-9 !?'"-.]+/
-  const lettersOnly = /[^a-zA-Z]+/
-  const lingualeoApi = useLingualeoApi()
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null)
+  const [translation, setTranslation] = useState('')
+  const [phrase, setPhrase] = useState('')
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    setAnchorEl(anchorEl ? null : e.currentTarget)
+    translate(props.word, { to: 'ru' })
+      .then((res: any) => {
+        setTranslation(res.text)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+    translate(props.sub, { to: 'ru' })
+      .then((res: any) => {
+        setPhrase(res.text)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  const open = Boolean(anchorEl)
 
   return (
-    <StyledWord
-      onClick={() => {
-        lingualeoApi.addWord(props.word.replace(lettersOnly, ''))
-      }}
-    >
-      {props.word}
-    </StyledWord>
+    <>
+      <StyledWord onClick={handleClick}>{props.word}</StyledWord>
+      <Popper open={open} anchorEl={anchorEl} placement="top">
+        <div className={classes.paper}>
+          <div>
+            {props.word} - {translation}
+          </div>
+          <div>{phrase}</div>
+        </div>
+      </Popper>
+    </>
   )
 }
